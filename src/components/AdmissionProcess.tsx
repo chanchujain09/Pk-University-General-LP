@@ -215,7 +215,7 @@ export default function AdmissionProcess() {
             <div className="flex flex-col sm:flex-row lg:flex-col gap-3.5 w-full">
               {/* Apply Online Button */}
               <button 
-                onClick={() => setActiveModal('apply')}
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 className="w-full bg-[#393185] hover:bg-[#2c246f] text-white font-bold py-3.5 px-6 rounded-lg text-sm transition-all shadow-md shadow-[#393185]/30 flex items-center justify-center gap-2 group cursor-pointer"
               >
                 <span>Apply Online</span>
@@ -224,10 +224,10 @@ export default function AdmissionProcess() {
 
               {/* Request Callback Button */}
               <button 
-                onClick={() => setActiveModal('callback')}
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 className="w-full bg-[#1e293b] hover:bg-[#334155] text-white border border-[#393185]/20 py-3.5 px-6 rounded-lg text-sm font-semibold transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
-                <PhoneCall className="w-4 h-4 text-[#393185]" />
+                <PhoneCall className="w-4 h-4 text-white" />
                 <span>Request Callback</span>
               </button>
             </div>
@@ -241,124 +241,6 @@ export default function AdmissionProcess() {
 
       </div>
 
-      {/* Dynamic Popups/Modals */}
-      <AnimatePresence>
-        {activeModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            {/* Backdrop */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setActiveModal(null)}
-              className="absolute inset-0 bg-black/60 backdrop-blur-xs"
-            />
-            
-            {/* Card Content container */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95, y: 10 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 10 }}
-              className="bg-white rounded-2xl shadow-2xl border border-gray-100 max-w-md w-full overflow-hidden relative z-10"
-            >
-              {/* Header */}
-              <div className="bg-[#0a1b2f] p-6 text-white flex justify-between items-center">
-                <div>
-                  <h3 className="text-lg font-bold">
-                    {activeModal === 'apply' ? 'Apply Admissions Online' : 'Request Free Consultation'}
-                  </h3>
-                  <p className="text-xs text-slate-300 mt-1">
-                    {activeModal === 'apply' ? 'Lock Your Seat for PKU Batch 2026' : 'Connect instantly with an expert adviser'}
-                  </p>
-                </div>
-                <button 
-                  onClick={() => setActiveModal(null)}
-                  className="p-1 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-
-              {/* Body Form */}
-              <div className="p-6">
-                {formSubmitted ? (
-                  <div className="py-12 flex flex-col items-center text-center">
-                    <div className="w-14 h-14 bg-emerald-50 rounded-full flex items-center justify-center border border-emerald-100 mb-4 animate-bounce">
-                      <CheckCircle2 className="w-8 h-8 text-emerald-600" />
-                    </div>
-                    <h4 className="text-lg font-bold text-gray-900">Success! Request Received</h4>
-                    <p className="text-xs text-gray-500 mt-2 max-w-xs leading-relaxed">
-                      Our administrative team will review your application and ping you shortly.
-                    </p>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                      <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5">Full Name *</label>
-                      <input 
-                        type="text" 
-                        required
-                        placeholder="John Doe"
-                        value={formData.name}
-                        onChange={(e) => setFormData({...formData, name: e.target.value})}
-                        className="w-full px-4.5 py-3 rounded-lg border border-gray-200 outline-none text-xs sm:text-sm focus:border-[#393185] focus:ring-1 focus:ring-[#393185] transition-all bg-gray-50/50"
-                      />
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5">Phone Number *</label>
-                        <input 
-                          type="tel" 
-                          required
-                          placeholder="+91"
-                          value={formData.phone}
-                          onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                          className="w-full px-4.5 py-3 rounded-lg border border-gray-200 outline-none text-xs sm:text-sm focus:border-[#393185] focus:ring-1 focus:ring-[#393185] transition-all bg-gray-50/50"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5">Email *</label>
-                        <input 
-                          type="email" 
-                          required
-                          value={formData.email}
-                          onChange={(e) => setFormData({...formData, email: e.target.value})}
-                          placeholder="name@domain.com"
-                          className="w-full px-4.5 py-3 rounded-lg border border-gray-200 outline-none text-xs sm:text-sm focus:border-[#393185] focus:ring-1 focus:ring-[#393185] transition-all bg-gray-50/50"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5">Faculty of Interest</label>
-                      <select 
-                        value={formData.program}
-                        onChange={(e) => setFormData({...formData, program: e.target.value})}
-                        className="w-full px-4 py-3 rounded-lg border border-gray-200 outline-none text-xs sm:text-sm focus:border-[#393185] focus:ring-1 focus:ring-[#393185] transition-all bg-gray-50/50"
-                      >
-                        <option value="">Select Faculty</option>
-                        <option value="engineering">Faculty of Engineering</option>
-                        <option value="computerscience">Faculty of Computer Science</option>
-                        <option value="management">Faculty of Management</option>
-                        <option value="pharmacy">Faculty of Pharmacy</option>
-                        <option value="law">Faculty of Law</option>
-                      </select>
-                    </div>
-
-                    <button 
-                      type="submit"
-                      className="w-full bg-[#393185] hover:bg-[#2c246f] text-white font-bold py-3.5 px-4 rounded-lg text-xs tracking-wider uppercase transition-all shadow-md shadow-indigo-100 mt-2"
-                    >
-                      Complete Submission
-                    </button>
-                  </form>
-                )}
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }

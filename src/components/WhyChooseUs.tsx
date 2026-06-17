@@ -1,42 +1,53 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import React from 'react';
+import { motion } from 'motion/react';
+import { Users, Handshake, Briefcase, Sparkles, Target, Award } from 'lucide-react';
 
 const pkuPoints = [
   {
     id: 1,
     title: "Expert Management Faculty",
-    description: "Learn from experienced academicians and industry professionals with corporate expertise across Finance, IT, and Marketing."
+    description: "Learn from experienced academicians and industry professionals with corporate expertise across Finance, IT, and Marketing.",
+    icon: <Users className="w-4.5 h-4.5" />,
+    colorClass: "bg-blue-50 text-blue-600 border-blue-200"
   },
   {
     id: 2,
     title: "IMD Delhi Collaboration",
-    description: "PKU is the first university in the region to collaborate with IMD Delhi — bringing metro-level management education to Shivpuri."
+    description: "PKU is the first university in the region to collaborate with IMD Delhi — bringing metro-level management education to Shivpuri.",
+    icon: <Handshake className="w-4.5 h-4.5" />,
+    colorClass: "bg-amber-50 text-amber-600 border-amber-200"
   },
   {
     id: 3,
     title: "Real-World Corporate Exposure",
-    description: "Industry projects, case studies, live assignments, and regular corporate visits to top companies across sectors."
+    description: "Industry projects, case studies, live assignments, and regular corporate visits to top companies across sectors.",
+    icon: <Briefcase className="w-4.5 h-4.5" />,
+    colorClass: "bg-purple-50 text-purple-600 border-purple-200"
   },
   {
     id: 4,
     title: "Leadership Development",
-    description: "Dedicated training in leadership, communication, teamwork, and decision-making to groom future business leaders."
+    description: "Dedicated training in leadership, communication, teamwork, and decision-making to groom future business leaders.",
+    icon: <Sparkles className="w-4.5 h-4.5" />,
+    colorClass: "bg-rose-50 text-rose-600 border-rose-200"
   },
   {
     id: 5,
     title: "Placement Support",
-    description: "Dedicated placement cell with resume building, mock interviews, and tie-ups with 200+ hiring partners across India."
+    description: "Dedicated placement cell with resume building, mock interviews, and tie-ups with 200+ hiring partners across India.",
+    icon: <Target className="w-4.5 h-4.5" />,
+    colorClass: "bg-red-50 text-red-600 border-red-200"
   },
   {
     id: 6,
     title: "UGC & AICTE Approved",
-    description: "All MBA programs are fully approved by UGC and AICTE, ensuring a nationally recognized and industry-respected degree."
+    description: "All MBA programs are fully approved by UGC and AICTE, ensuring a nationally recognized and industry-respected degree.",
+    icon: <Award className="w-4.5 h-4.5" />,
+    colorClass: "bg-emerald-50 text-emerald-600 border-emerald-200"
   }
 ];
 
 export default function WhyChooseUs() {
-  const [activeIndex, setActiveIndex] = useState(2); // Default to Real-World Corporate Exposure (index 2) match image
-
   // Image source matching the exact mockup conference room
   const mainImage = "https://pkuniversity.edu.in/wp-content/uploads/2025/05/pku-april-2025.jpg";
 
@@ -101,51 +112,42 @@ export default function WhyChooseUs() {
             </div>
           </div>
 
-          {/* Right Column: Custom Vertical Timeline with interactivity */}
+          {/* Right Column: Custom Vertical Timeline */}
           <div className="lg:col-span-7 relative pl-0 sm:pl-8 py-4">
             
             {/* The vertical timeline track mimicking the mockup */}
             {/* Top dashed line extension */}
-            <div className="absolute left-[7px] sm:left-[31px] w-[2px] h-[24px] border-l-2 border-dashed border-[#393185] top-[-8px] hidden sm:block pointer-events-none" />
+            <div className="absolute left-[17px] sm:left-[31px] w-[2px] h-[24px] border-l-2 border-dashed border-gray-200 top-[-8px] pointer-events-none" />
             
             {/* Main vertical line */}
-            <div className="absolute left-[7px] sm:left-[31px] w-[2px] bg-[#393185] top-[16px] bottom-[16px] hidden sm:block pointer-events-none" />
+            <div className="absolute left-[17px] sm:left-[31px] w-[2px] bg-gradient-to-b from-gray-200 via-gray-300 to-gray-200 top-[16px] bottom-[16px] pointer-events-none" />
             
             {/* Bottom dashed line extension */}
-            <div className="absolute left-[7px] sm:left-[31px] w-[2px] h-[24px] border-l-2 border-dashed border-[#393185] bottom-[-8px] hidden sm:block pointer-events-none" />
+            <div className="absolute left-[17px] sm:left-[31px] w-[2px] h-[24px] border-l-2 border-dashed border-gray-200 bottom-[-8px] pointer-events-none" />
 
             {/* Timeline points list */}
             <div className="space-y-8">
-              {pkuPoints.map((point, idx) => {
-                const isActive = activeIndex === idx;
-
+              {pkuPoints.map((point) => {
                 return (
                   <div 
                     key={point.id}
-                    onClick={() => setActiveIndex(idx)}
-                    className="relative cursor-pointer group flex items-start"
+                    className="relative flex items-start group"
                   >
-                    {/* Timeline circle indicator with dynamic focus effect */}
-                    <div className="absolute left-[0px] sm:left-[24px] top-[4px] z-10 hidden sm:flex items-center justify-center">
+                    {/* Timeline icon circle indicator with colored icon styling */}
+                    <div className="absolute left-[-1px] sm:left-[14px] top-[4px] z-10 flex items-center justify-center">
                       <div 
-                        className={`w-4 h-4 rounded-full border-2 transition-all duration-300 ${
-                          isActive 
-                            ? 'bg-[#393185] border-[#393185] scale-125 shadow-md shadow-indigo-200' 
-                            : 'bg-white border-[#393185] hover:border-[#4c42ad] hover:scale-110'
-                        }`}
-                      />
+                        className={`w-9 h-9 rounded-full border-2 flex items-center justify-center transition-transform duration-300 group-hover:scale-105 shadow-sm ${point.colorClass}`}
+                      >
+                        {point.icon}
+                      </div>
                     </div>
 
                     {/* Content Box with premium typography */}
-                    <div className="pl-0 sm:pl-16 transition-all duration-300">
-                      <h3 className={`text-base sm:text-lg font-bold transition-colors duration-300 leading-tight ${
-                        isActive ? 'text-[#0a1b2f]' : 'text-gray-800 group-hover:text-[#393185]'
-                      }`}>
+                    <div className="pl-12 sm:pl-16">
+                      <h3 className="text-base sm:text-lg font-bold text-[#0a1b2f] leading-tight">
                         {point.title}
                       </h3>
-                      <p className={`mt-1 text-xs sm:text-sm leading-relaxed transition-all duration-300 max-w-[560px] ${
-                        isActive ? 'text-[#1e293b] font-normal font-sans' : 'text-gray-500 font-sans font-light'
-                      }`}>
+                      <p className="mt-1 text-xs sm:text-sm leading-relaxed text-gray-500 font-sans font-light max-w-[560px]">
                         {point.description}
                       </p>
                     </div>
@@ -162,4 +164,3 @@ export default function WhyChooseUs() {
     </section>
   );
 }
-

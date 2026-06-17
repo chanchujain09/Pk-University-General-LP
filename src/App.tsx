@@ -43,7 +43,7 @@ export default function App() {
             </p>
             <div className="flex flex-wrap gap-3 mt-1">
               <span className="flex items-center gap-1.5 bg-white/5 border border-white/10 px-3 py-1 rounded-full text-xs text-slate-300 font-medium">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#393185]" />
+                <ShieldCheck className="w-3.5 h-3.5 text-white" />
                 UGC Approved
               </span>
               <span className="flex items-center gap-1.5 bg-white/5 border border-white/10 px-3 py-1 rounded-full text-xs text-slate-300 font-medium">
@@ -61,7 +61,7 @@ export default function App() {
             <div className="space-y-4 text-sm">
               <div className="flex items-start gap-3.5 group">
                 <div className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#393185]/10 group-hover:border-[#393185]/20 transition-all">
-                  <MapPin className="w-4 h-4 text-[#393185]" />
+                  <MapPin className="w-4 h-4 text-white" />
                 </div>
                 <p className="text-gray-300 font-light leading-relaxed pt-0.5">
                   P.K. University, Shivpuri Village Thanra, NH-27, Jhansi–Shivpuri Highway, Tehsil Karera, District Shivpuri, Madhya Pradesh – 473665
@@ -70,7 +70,7 @@ export default function App() {
 
               <div className="flex items-start gap-3.5 group">
                 <div className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#e4321b]/10 group-hover:border-[#e4321b]/20 transition-all">
-                  <Phone className="w-4 h-4 text-[#e4321b]" />
+                  <Phone className="w-4 h-4 text-white" />
                 </div>
                 <div>
                   <p className="text-gray-300 font-semibold font-mono tracking-tight leading-none pt-0.5">
@@ -88,7 +88,7 @@ export default function App() {
 
               <div className="flex items-start gap-3.5 group">
                 <div className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#393185]/10 group-hover:border-[#393185]/20 transition-all">
-                  <Mail className="w-4 h-4 text-[#393185]" />
+                  <Mail className="w-4 h-4 text-white" />
                 </div>
                 <div>
                   <p className="text-gray-300 font-semibold leading-none pt-0.5">
@@ -104,7 +104,7 @@ export default function App() {
 
               <div className="flex items-start gap-3.5 group">
                 <div className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#e4321b]/10 group-hover:border-[#e4321b]/20 transition-all">
-                  <Globe className="w-4 h-4 text-[#e4321b]" />
+                  <Globe className="w-4 h-4 text-white" />
                 </div>
                 <div>
                   <p className="text-gray-300 font-semibold leading-none pt-0.5">
