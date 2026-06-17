@@ -1,0 +1,8 @@
+{
+  "name": "P.K. University Admissions Landing Page",
+  "description": "High-converting, premium landing page designed for P.K. University's 2026 admissions campaign.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
